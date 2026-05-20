@@ -61,6 +61,13 @@ html, body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   height: 100%;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -1512,16 +1519,16 @@ a {
   
   .content-header {
     margin-top: 64px;
-    padding: 20px 24px;
+    padding: 16px 20px;
   }
   
   .content-body {
-    padding: 24px;
+    padding: 16px;
   }
   
   .content-layout {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
   }
   
   .toc-sidebar {
@@ -1532,6 +1539,18 @@ a {
   
   .progress-container {
     display: none; /* Hide linear bar since we have circular */
+  }
+  
+  .step-card {
+    padding: 20px 16px;
+  }
+  
+  .top-notice-box, .alert-box {
+    padding: 16px;
+  }
+  
+  .step-title {
+    font-size: 1.1rem;
   }
 }
 
@@ -1555,6 +1574,20 @@ a {
   
   .flow-arrow {
     transform: rotate(90deg);
+  }
+  
+  .page-navigation-area {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-mockup-body {
+    padding: 16px;
+  }
+  
+  .info-table th, .info-table td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
   }
 }
 
