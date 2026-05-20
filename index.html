@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서태준의 알고리즘 기반 전략 운용 | Xlence 가이드</title>
+  <!-- Google Fonts: Outfit for English/numbers, Noto Sans KR for Korean -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- App Wrapper -->
+  <div class="app-container">
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+      <button class="menu-toggle-btn" id="mobile-menu-toggle" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="feather feather-menu">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <div class="mobile-logo">
+        <span class="logo-highlight">서태준의</span> 알고리즘 기반 전략 운용
+      </div>
+      <button class="theme-toggle-btn" id="mobile-theme-toggle" aria-label="테마 전환">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-main"><span class="logo-highlight">서태준의</span><br>알고리즘 기반 전략 운용</div>
+        </div>
+        <button class="close-sidebar-btn" id="close-sidebar-btn" aria-label="메뉴 닫기">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Xlence 이용 가이드</div>
+        <ul class="nav-menu">
+          <li class="nav-item active" data-tab="tab-kyc">
+            <a href="#tab-kyc">
+              <span class="tab-num">01</span>
+              <span class="tab-title">가입 및 KYC 인증 방법</span>
+              <span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-account">
+            <a href="#tab-account">
+              <span class="tab-num">02</span>
+              <span class="tab-title">거래 계좌 생성 방법</span>
+              <span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-deposit-bank">
+            <a href="#tab-deposit-bank">
+              <span class="tab-num">03</span>
+              <span class="tab-title">국내은행 입금 방법</span>
+              <span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-withdraw-bank">
+            <a href="#tab-withdraw-bank">
+              <span class="tab-num">04</span>
+              <span class="tab-title">국내은행 출금 방법</span>
+              <span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-deposit-crypto">
+            <a href="#tab-deposit-crypto">
+              <span class="tab-num">05</span>
+              <span class="tab-title">암호화폐 입출금 방법</span>
+              <span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-mt4">
+            <a href="#tab-mt4">
+              <span class="tab-num">06</span>
+              <span class="tab-title">MT4 사용 방법</span>
+              <span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Support/Links Card -->
+      <div class="sidebar-footer">
+        <div class="support-card">
+          <div class="support-title">도움이 필요하신가요?</div>
+          <p class="support-desc">가이드 진행 중 막히거나 문의사항이 있다면 아래 공식 채널로 언제든지 문의해 주세요.</p>
+          <a href="https://t.me/jerry1324" target="_blank" rel="noopener noreferrer" class="support-btn telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="icon-svg">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1 .22-1.6 1.48-1.55 2.73-2.61 3.51-3.6.1-.12.18-.36.08-.47-.1-.11-.3-.07-.43-.04-.18.04-3.05 1.94-6.13 4.02-.45.31-.86.46-1.23.45-.41-.01-1.2-.23-1.79-.42-.72-.24-1.29-.36-1.24-.76.03-.2.3-.41.82-.62 3.18-1.38 5.3-2.3 6.36-2.75 3.03-1.29 3.66-1.51 4.07-1.52.09 0 .29.02.42.13.11.09.15.22.16.33.01.07.02.24.01.37z" />
+            </svg>
+            텔레그램 1:1 문의 (@jerry1324)
+          </a>
+          <a href="https://short.xlence.com/yfp" target="_blank" rel="noopener noreferrer" class="support-btn website">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="icon-svg">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+              </path>
+            </svg>
+            Xlence 공식 홈페이지
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Header with Theme toggle & Progress -->
+      <header class="content-header">
+        <div class="header-tab-info">
+          <span class="tab-tag" id="current-tab-number">STEP 01</span>
+          <h1 id="current-tab-title">가입 및 KYC 인증 방법</h1>
+        </div>
+
+        <div class="header-actions">
+          <!-- Global Progress Tracker -->
+          <div class="progress-container">
+            <div class="progress-text">완료율: <span id="progress-percent">0%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="theme-toggle-btn" id="desktop-theme-toggle" aria-label="테마 전환">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Content Body -->
+      <div class="content-body">
+
+        <!-- CONTENT: TAB 1 (KYC) -->
+        <section id="tab-kyc" class="tab-content active">
+          <div class="content-layout">
+            <!-- Left Side: Main Guides -->
+            <div class="guide-steps">
+              <div class="top-notice-box">
+                <span class="icon">📌</span>
+                <p>아래 절차를 순서대로 진행해 주세요. <strong>KYC 인증이 최종 완료된 후에만 입출금 및 실제 거래가 가능합니다.</strong></p>
+              </div>
+
+              <!-- Step 1 -->
+              <div class="step-card" id="kyc-step-1">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-1">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 1</div>
+                  <h3 class="step-title">회원가입</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>공식 홈페이지 <a href="https://short.xlence.com/yfp" target="_blank" class="text-link">short.xlence.com/yfp</a> 접속 후 <span style="color: #0d6efd;">대한민국으로 국가 설정후 ▶ 회원가입 진행 해주세요.</span></li>
+                    <li>모든 회원가입 양식은 반드시 <strong>영문</strong>으로 작성해 주세요.</li>
+                  </ol>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_1_img_0.jpeg" alt="Xlence 회원가입 화면" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">회원가입 화면</div>
+                    </div>
+                  </div>
+
+                  <!-- Virtual Form Mockup -->
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">Xlence 회원가입 양식</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-row">
+                        <div class="form-col">
+                          <label>이름 (First Name)</label>
+                          <input type="text" placeholder="Gildong" disabled>
+                        </div>
+                        <div class="form-col">
+                          <label>성 (Last Name)</label>
+                          <input type="text" placeholder="Hong" disabled>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>휴대폰 번호 (Phone Number)</label>
+                        <div class="phone-input">
+                          <span class="phone-prefix">+82 (대한민국)</span>
+                          <input type="text" placeholder="1012345678" disabled>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>메일 주소 (Email Address)</label>
+                        <input type="email" placeholder="gildong@email.com" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label>비밀번호 (Password)</label>
+                        <input type="password" value="••••••••••••" disabled>
+                        <span class="helper-text">소문자·대문자·숫자·기호 포함 6~15자</span>
+                      </div>
+                      <div class="form-group">
+                        <label>거주 국가 (Country)</label>
+                        <select disabled>
+                          <option>Republic of Korea (대한민국)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tip-box success">
+                    <span class="icon">✅</span>
+                    <p>개인정보 제공 및 약관 동의 체크박스를 클릭한 후, 최하단 <strong>'계좌 개설'</strong> 버튼을 클릭하면 완료됩니다.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card" id="kyc-step-2">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-2">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 2</div>
+                  <h3 class="step-title">로그인</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>가입이 정상적으로 완료되면 로그인 화면으로 이동합니다.</p>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_2_img_0.jpeg" alt="로그인 화면" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">로그인 화면</div>
+                    </div>
+                  </div>
+
+                  <div class="info-card">
+                    <div class="info-row">
+                      <span class="label">ID (이메일)</span>
+                      <span class="val">가입 시 입력했던 본인의 <strong>이메일 주소</strong></span>
+                    </div>
+                    <div class="info-row">
+                      <span class="label">비밀번호</span>
+                      <span class="val">가입 시 설정한 <strong>비밀번호</strong></span>
+                    </div>
+                  </div>
+                  <p class="mt-3">정보를 기입한 뒤 <strong>'로그인'</strong> 버튼을 클릭하여 대시보드로 진입해 주세요.</p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card" id="kyc-step-3">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-3">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 3</div>
+                  <h3 class="step-title">이메일 및 모바일 인증</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>로그인 후 대시보드 우측 상단의 <strong>메뉴 아이콘(≡)</strong>을 클릭합니다.</li>
+                    <li><strong>Profile → Account</strong> 메뉴를 차례대로 선택합니다.</li>
+                    <li>이메일(Email) 항목의 우측에 있는 <strong>✏️ (편집) 아이콘</strong>을 클릭하여 이메일 인증 메일을 발송하고, 링크를 클릭하여 인증을 진행합니다.
+                    </li>
+                    <li>휴대폰(Mobile Phone) 항목도 마찬가지로 <strong>✏️ 아이콘</strong>을 클릭하여 인증번호를 문자(SMS)로 받아 인증을 완료합니다.</li>
+                  </ol>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_3_img_0.png" alt="대시보드 메뉴 진입" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. 대시보드 메뉴 진입</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_4_img_0.jpeg" alt="Profile -> Account 이동" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. Profile -> Account 이동</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_5_img_0.jpeg" alt="이메일 및 휴대폰 인증 실행" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">3. 이메일 및 휴대폰 인증 실행</div>
+                    </div>
+                  </div>
+
+                  <div class="verification-badge-mock">
+                    <div class="badge-item">
+                      <span>Email Authentication</span>
+                      <span class="badge status-verified">Verified</span>
+                    </div>
+                    <div class="badge-item">
+                      <span>Mobile Authentication</span>
+                      <span class="badge status-verified">Verified</span>
+                    </div>
+                  </div>
+
+                  <div class="tip-box warning">
+                    <span class="icon">💡</span>
+                    <p>인증이 올바르게 완료되면 상태 표시가 <strong>Verified</strong>로 변경되었는지 꼭 눈으로 확인해 주세요.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="step-card" id="kyc-step-4">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-4">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 4</div>
+                  <h3 class="step-title">신원 정보 입력</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>우측 상단 <strong>≡ 메뉴 → Profile → Profile Information</strong>을 클릭합니다.</li>
+                    <li><strong>Personal details</strong> 섹션 우측의 <strong>✏️ (편집) 버튼</strong>을 클릭하여 정보를 작성합니다.</li>
+                  </ol>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_6_img_0.jpeg" alt="Personal details 입력" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">Personal Details 입력</div>
+                    </div>
+                  </div>
+
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">Personal Details</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-group">
+                        <label>Full Name (영문 이름)</label>
+                        <input type="text" placeholder="GILDONG HONG (신분증과 완벽히 일치해야 함)" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label>Full Name - Local (한글 이름)</label>
+                        <input type="text" placeholder="홍길동" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label>Gender (성별)</label>
+                        <div class="radio-mock">
+                          <span class="radio-val checked">Male (남)</span> / <span class="radio-val">Female (여)</span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Date of Birth (생년월일)</label>
+                        <input type="text" placeholder="YYYY / MM / DD" disabled>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="alert-box critical">
+                    <span class="icon">⚠️</span>
+                    <div class="alert-content">
+                      <h4>주소 입력 전 필수 숙지사항</h4>
+                      <p>주소를 기입할 때는 반드시 제출할 신분증(주민등록증, 운전면허증, 또는 여권)에 기재되어 있는 실제 주소와 완벽하게 동일하게 기입하셔야 합니다. 주소가 다를 경우
+                        반려(Reject) 처리가 됩니다.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="step-card" id="kyc-step-5">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-5">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 5</div>
+                  <h3 class="step-title">주소 입력</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li><strong>Address details</strong> 섹션 우측의 <strong>✏️ 버튼</strong>을 클릭합니다.</li>
+                    <li>모든 주소 정보는 영문으로 변환하여 기입해야 합니다.</li>
+                  </ol>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_7_img_0.jpeg" alt="Address details 입력" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">Address Details 입력</div>
+                    </div>
+                  </div>
+
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">Address Details (영문 작성)</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-group">
+                        <label>Address line 1</label>
+                        <div class="input-with-copy">
+                          <input type="text" id="sample-addr1" value="300, Olympic-ro" readonly>
+                          <button class="copy-btn" data-clipboard-target="#sample-addr1">복사</button>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Address line 2 (상세 주소: 동·호수 등)</label>
+                        <input type="text" placeholder="101-dong 6501-ho" disabled>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-col">
+                          <label>Postal Code (우편번호)</label>
+                          <input type="text" placeholder="05551" disabled>
+                        </div>
+                        <div class="form-col">
+                          <label>State / Region (구/도)</label>
+                          <input type="text" placeholder="Songpa-gu" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-col">
+                          <label>City (시)</label>
+                          <input type="text" placeholder="Seoul" disabled>
+                        </div>
+                        <div class="form-col">
+                          <label>Country (국가)</label>
+                          <input type="text" value="Republic of Korea" disabled>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tip-box info">
+                    <span class="icon">💡</span>
+                    <p>영문 주소는 네이버나 구글 영문 주소 변환기를 통해 한글 주소를 입력하시면 간편하게 영문으로 확인 및 기입할 수 있습니다.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 6 -->
+              <div class="step-card" id="kyc-step-6">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-6">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 6</div>
+                  <h3 class="step-title">Financial Profile 입력</h3>
+                </div>
+                <div class="step-card-body">
+                  <p><strong>Financial Profile</strong> 섹션 우측의 <strong>✏️ 버튼</strong>을 누른 뒤, 해외 금융 규제 준수를 위한 재정 정보를 아래
+                    예시 가이드를 참고하여 입력합니다.</p>
+
+                  <div class="info-table-container">
+                    <table class="info-table">
+                      <thead>
+                        <tr>
+                          <th>항목</th>
+                          <th>설명</th>
+                          <th>예시 입력값</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="bold">Country of Tax Residence</td>
+                          <td>거주 국가</td>
+                          <td><strong>Republic of Korea</strong></td>
+                        </tr>
+                        <tr>
+                          <td class="bold">TIN</td>
+                          <td>주민번호 전체</td>
+                          <td><strong>본인 주민등록번호 13자리 전체 입력 (하이픈 생략)</strong></td>
+                        </tr>
+                        <tr>
+                          <td class="bold">Employment Status</td>
+                          <td>고용 형태</td>
+                          <td><strong>Self Employed</strong> (자영업) 또는 본인 고용 상태</td>
+                        </tr>
+                        <tr>
+                          <td class="bold">Source of Funds</td>
+                          <td>자금 출처</td>
+                          <td><strong>Saving/Investments</strong> (저축/투자)</td>
+                        </tr>
+                        <tr>
+                          <td class="bold">Nature of Business</td>
+                          <td>비즈니스 성격</td>
+                          <td><strong>FinancialServicesOther</strong> (금융서비스 등)</td>
+                        </tr>
+                        <tr>
+                          <td class="bold">Expected deposit (12M)</td>
+                          <td>1년간 예상 입금액</td>
+                          <td><strong>$50,000 - $100,000</strong></td>
+                        </tr>
+                        <tr>
+                          <td class="bold">Estimated Annual Income</td>
+                          <td>연간 추정 소득</td>
+                          <td><strong>$50,000 - $99,999</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_8_img_0.jpeg" alt="Financial Profile 입력" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">Financial Profile 입력</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 7 -->
+              <div class="step-card" id="kyc-step-7">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-7">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 7</div>
+                  <h3 class="step-title">Trading Experience 입력</h3>
+                </div>
+                <div class="step-card-body">
+                  <p><strong>Trading Experience</strong> 섹션 우측의 ✏️ 버튼을 눌러 과거 거래 경험 정보를 기입합니다. 아래 수치는 권장 예시이며 본인의 성향에 맞추어
+                    유연하게 기입하셔도 무방합니다.</p>
+
+                  <div class="info-table-container">
+                    <table class="info-table">
+                      <thead>
+                        <tr>
+                          <th>자산 종류 (Asset)</th>
+                          <th>빈도 (Frequency)</th>
+                          <th>금액 (Amount)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="bold">Forex and CFD's</td>
+                          <td>Occasionally (때때로)</td>
+                          <td>$50,000 - $100,000</td>
+                        </tr>
+                        <tr>
+                          <td class="bold">Securities (주식 등)</td>
+                          <td>Rarely (거의 없음)</td>
+                          <td>$10,000 - $20,000</td>
+                        </tr>
+                        <tr>
+                          <td class="bold">Other Derivatives (파생상품)</td>
+                          <td>Rarely (거의 없음)</td>
+                          <td>$10,000 - $20,000</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_9_img_0.jpeg" alt="Trading Experience 입력 시작" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">Trading Experience 1</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_10_img_0.jpeg" alt="Trading Experience 입력 완료" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">Trading Experience 2</div>
+                    </div>
+                  </div>
+
+                  <div class="tip-box info">
+                    <span class="icon">📋</span>
+                    <p>위 항목은 규제 요구 사안을 충족하기 위한 예시 입력값입니다. 참고용으로 활용하시기 바랍니다.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 8 -->
+              <div class="step-card" id="kyc-step-8">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-8">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 8</div>
+                  <h3 class="step-title">신분증 업로드 (KYC)</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>대시보드의 <strong>Profile Documents</strong> 섹션으로 이동합니다.</li>
+                    <li><strong>Identity Document</strong> 항목 우측의 <strong>👁️ (보기/업로드) 아이콘</strong>을 클릭합니다.</li>
+                    <li>제출할 신분증 종류를 선택합니다: <strong>여권(Passport), 주민등록증(National ID Card), 운전면허증(Driving
+                        License)</strong> 중 택일.</li>
+                    <li>촬영해 둔 신분증 앞면(및 뒷면) 사진을 업로드합니다.</li>
+                  </ol>
+
+                  <div class="alert-box critical">
+                    <span class="icon">⚠️</span>
+                    <div class="alert-content">
+                      <h4>매우 중요: 업로드 전 검토</h4>
+                      <p>업로드하는 신분증에 나와 있는 주민등록상 주소와 Step 5에서 입력한 영문 주소가 정확하게 일치해야 심사가 반려되지 않습니다. 추후 주소 인증을 추가 요청받을 시에도
+                        동일한 신분증을 제출하시면 원활하게 처리됩니다.</p>
+                    </div>
+                  </div>
+
+                  <p class="mt-4">업로드가 끝나면 서류 심사가 시작되며, 통과 시 다음과 같이 초록색 승인 상태로 바뀝니다.</p>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_11_img_0.jpeg" alt="신분증 업로드" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">신분증 업로드 화면</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_page_12_img_0.jpeg" alt="Approved 승인 완료" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">Approved 승인 완료</div>
+                    </div>
+                  </div>
+
+                  <div class="verification-badge-mock">
+                    <div class="badge-item">
+                      <span>KYC Verification Status</span>
+                      <span class="badge status-approved">Approved ✅</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 9 -->
+              <div class="step-card" id="kyc-step-9">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="kyc-9">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 9</div>
+                  <h3 class="step-title">주소 문서 업로드 (간편)</h3>
+                </div>
+                <div class="step-card-body">
+                  <p><strong>프로필 설정 → 거주지 증명 문서</strong> 또한 증빙 완료되실 경우 알고리즘 기반 전략 운용 구동이 가능합니다.</p>
+                  
+                  <div class="tip-box info mt-3">
+                    <span class="icon">💡</span>
+                    <p>신분증 또는 면허증으로 KYC 인증하셨을 경우, 1차 주소 기입란 또한 신분증 또는 면허증 앞면 주소를 영문 변환하여 입력 후 → 주소 문서 업로드 시 → <strong>영주권</strong> 선택 → <strong>신분증 앞면 사진 업로드</strong>하시면 5분 내 승인됩니다.</p>
+                  </div>
+                  
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_step9_img_1.png" alt="거주지 증명 문서 메뉴" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">거주지 증명 문서 제출</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_step9_img_2.jpg" alt="프로필 정보 이동" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">주소 세부 정보 메뉴 이동</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_step9_img_3.jpg" alt="주소 세부 정보 편집" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">주소 세부 정보 편집</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/kyc_step9_img_4.jpg" alt="주소 문서 선택 (영주권)" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">문서 유형: 영주권 선택</div>
+                    </div>
+                  </div>
+                  
+                  <div class="celebration-box mt-4">
+                    🎉 축하합니다! KYC 인증이 승인 처리되면 이제 모든 입출금 업무와 본격적인 거래 진행이 가능합니다.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Page Navigation Button -->
+              <div class="page-navigation-area">
+                <div></div> <!-- left empty spacer -->
+                <button class="next-page-btn" data-next-tab="tab-account">
+                  다음 단계: 거래 계좌 생성 방법
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Right Side: Table of Contents & Quick Tips -->
+            <div class="toc-sidebar">
+              <div class="toc-card">
+                <h3>이 페이지 목차</h3>
+                <ul class="toc-list">
+                  <li><a href="#kyc-step-1" class="toc-link">Step 1 — 회원가입</a></li>
+                  <li><a href="#kyc-step-2" class="toc-link">Step 2 — 로그인</a></li>
+                  <li><a href="#kyc-step-3" class="toc-link">Step 3 — 이메일/모바일 인증</a></li>
+                  <li><a href="#kyc-step-4" class="toc-link">Step 4 — 신원 정보 입력</a></li>
+                  <li><a href="#kyc-step-5" class="toc-link">Step 5 — 주소 입력</a></li>
+                  <li><a href="#kyc-step-6" class="toc-link">Step 6 — Financial Profile</a></li>
+                  <li><a href="#kyc-step-7" class="toc-link">Step 7 — Trading Experience</a></li>
+                  <li><a href="#kyc-step-8" class="toc-link">Step 8 — 신분증 업로드 (KYC)</a></li>
+                  <li><a href="#kyc-step-9" class="toc-link">Step 9 — 주소 문서 업로드 (간편)</a></li>
+                </ul>
+              </div>
+
+              <div class="checklist-summary-card">
+                <h3>완료 현황</h3>
+                <div class="gauge-wrapper">
+                  <svg class="gauge-circle" viewBox="0 0 36 36">
+                    <path class="gauge-circle-bg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="gauge-circle-fill" id="kyc-gauge-fill" stroke-dasharray="0, 100"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  </svg>
+                  <div class="gauge-percentage" id="kyc-gauge-percent">0%</div>
+                </div>
+                <p class="gauge-status"><span id="kyc-checked-count">0</span> / 9 단계 완료</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="risk-warning-footer">
+            <h4>*주의사항 및 위험고지</h4>
+            <p>본 안내 자료는 자동매매 시스템을 비롯한 금융/파생상품 거래에 대한 전반적인 이해를 돕기 위한 단순 정보 제공을 목적으로 하며, 특정 금융상품의 매매나 투자에 대한 권유, 자문, 또는 종목 추천을 의미하지 않습니다.</p>
+            <p>해외선물, 마진, 암호화폐, 자동매매 시스템 등을 포함한 모든 금융/파생상품 거래는 높은 가격 변동성과 시장 위험을 동반하며, 원금 손실의 가능성이 있습니다. 특히 레버리지를 활용하는 거래의 경우 투자 원금을 초과하는 막대한 손실이 발생할 수 있으므로 각별한 주의가 필요합니다.</p>
+            <p>시스템의 알고리즘 설정, 시장의 거시 경제적 환경, 계좌의 증거금 조건 등에 따라 실제 투자 결과는 예상과 크게 달라질 수 있으며, 제공되는 과거의 수익률 데이터가 미래의 수익을 보장하지 않습니다.</p>
+            <p>투자 플랫폼 및 시스템매매 지원 여부는 각 브로커의 내부 정책 및 규제 환경에 따라 사전 예고 없이 변경되거나 제한될 수 있습니다.</p>
+            <p>모든 투자의 최종 판단과 그에 따른 금융적, 법적 책임은 전적으로 투자자 본인에게 있으며, 자신의 재무 상태와 투자 경험, 위험 감수 능력을 충분히 고려하여 신중하게 결정하시기 바랍니다.</p>
+          </div>
+        </section>
+
+        <!-- CONTENT: TAB 2 (ACCOUNT) -->
+        <section id="tab-account" class="tab-content">
+          <div class="content-layout">
+            <div class="guide-steps">
+              <div class="top-notice-box success">
+                <span class="icon">✅</span>
+                <p><strong>사전 필수 조건:</strong> 반드시 가입 및 KYC 인증(신분증 승인)이 최종 완료된 상태에서 계좌를 생성하셔야 합니다.</p>
+              </div>
+
+              <!-- Step 1 -->
+              <div class="step-card" id="acc-step-1">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="acc-1">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 1</div>
+                  <h3 class="step-title">메뉴 → Accounts 클릭</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>로그인하여 대시보드에 진입한 후, 상단에 위치한 글로벌 메뉴 탭 중에서 <strong>Accounts</strong> 탭을 클릭하여 계좌 관리 화면으로 진입해 주세요.</p>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/acc_page_1_img_0.jpeg" alt="Accounts 메뉴 이동" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">Accounts 메뉴 이동</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card" id="acc-step-2">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="acc-2">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 2</div>
+                  <h3 class="step-title">ADD ACCOUNT 클릭</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>계좌 관리 화면 중간에 위치한 <strong>Trading Accounts</strong> 섹션 내 우측의 <strong>ADD ACCOUNT</strong> 버튼을 클릭합니다.
+                  </p>
+                  <div class="alert-box warning mt-3">
+                    <span class="icon">⚠️</span>
+                    <div class="alert-content">
+                      <h4>실수 주의</h4>
+                      <p>아래쪽에 있는 'Demo Accounts' 섹션 하단에도 ADD ACCOUNT 버튼이 있습니다. 실제 거래를 위한 계좌 생성이므로 <strong>데모 계좌의 ADD
+                          ACCOUNT는 클릭하지 마십시오.</strong></p>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/acc_page_2_img_0.jpeg" alt="ADD ACCOUNT 클릭" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">ADD ACCOUNT 클릭</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card" id="acc-step-3">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="acc-3">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 3</div>
+                  <h3 class="step-title">Live Trading Account 선택</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>계좌 유형 선택 창이 뜨면 <strong>Live Trading Account</strong> 라디오 버튼을 선택하신 후 <strong>NEXT</strong> 버튼을
+                    클릭합니다.</p>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/acc_page_3_img_0.jpeg" alt="Live Trading Account 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">Live Trading Account 선택</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="step-card" id="acc-step-4">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="acc-4">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 4</div>
+                  <h3 class="step-title">계좌 설정 입력</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>실제 메타트레이더4(MT4) 거래에서 연동할 실계좌의 하부 옵션들을 아래와 같이 맞추어 작성 및 선택해 주세요.</p>
+
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">Live Account Configuration</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-group">
+                        <label>Account Type (계좌 유형)</label>
+                        <select disabled>
+                          <option>MT4 → Xlence Essential</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Currency (통화 단위)</label>
+                        <select disabled>
+                          <option>USD</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Leverage (레버리지 비율)</label>
+                        <select disabled>
+                          <option>1:1000</option>
+                        </select>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-col">
+                          <label>Promo Code</label>
+                          <input type="text" placeholder="체크하지 않고 비워둠" disabled>
+                        </div>
+                        <div class="form-col">
+                          <label>Bonus (보너스 수령 여부)</label>
+                          <select disabled>
+                            <option>No Bonus</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Trading Password (거래 비밀번호)</label>
+                        <input type="password" value="••••••••••••" disabled>
+                        <span class="helper-text">규칙: 영문 대소문자 + 숫자 + 특수기호 조합하여 12~15자리 설정</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/acc_page_4_img_0.jpeg" alt="계좌 옵션 설정" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. 계좌 옵션 설정</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/acc_page_5_img_0.jpeg" alt="비밀번호 설정 및 제출" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. 비밀번호 설정 및 제출</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/acc_page_6_img_0.jpeg" alt="계좌 생성 성공 확인" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">3. 계좌 생성 성공 확인</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/acc_page_7_img_0.jpeg" alt="발급 계좌 리스트 확인" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">4. 발급 계좌 리스트 확인</div>
+                    </div>
+                  </div>
+
+                  <p class="mt-3">모든 사항 입력 완료 후 하단의 <strong>SUBMIT</strong> 버튼을 클릭하면 거래 실계좌번호가 발급되며 계좌 생성이 정상적으로 마무리됩니다.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Page Navigation Button -->
+              <div class="page-navigation-area">
+                <button class="prev-page-btn" data-next-tab="tab-kyc">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  이전 단계
+                </button>
+                <button class="next-page-btn" data-next-tab="tab-deposit-bank">
+                  다음 단계: 국내은행 입금 방법
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Right Side: Table of Contents & Quick Tips -->
+            <div class="toc-sidebar">
+              <div class="toc-card">
+                <h3>이 페이지 목차</h3>
+                <ul class="toc-list">
+                  <li><a href="#acc-step-1" class="toc-link">Step 1 — 메뉴 → Accounts</a></li>
+                  <li><a href="#acc-step-2" class="toc-link">Step 2 — ADD ACCOUNT</a></li>
+                  <li><a href="#acc-step-3" class="toc-link">Step 3 — Live Trading Account</a></li>
+                  <li><a href="#acc-step-4" class="toc-link">Step 4 — 계좌 설정 입력</a></li>
+                </ul>
+              </div>
+
+              <div class="checklist-summary-card">
+                <h3>완료 현황</h3>
+                <div class="gauge-wrapper">
+                  <svg class="gauge-circle" viewBox="0 0 36 36">
+                    <path class="gauge-circle-bg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="gauge-circle-fill" id="acc-gauge-fill" stroke-dasharray="0, 100"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  </svg>
+                  <div class="gauge-percentage" id="acc-gauge-percent">0%</div>
+                </div>
+                <p class="gauge-status"><span id="acc-checked-count">0</span> / 4 단계 완료</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="risk-warning-footer">
+            <h4>*주의사항 및 위험고지</h4>
+            <p>본 안내 자료는 자동매매 시스템을 비롯한 금융/파생상품 거래에 대한 전반적인 이해를 돕기 위한 단순 정보 제공을 목적으로 하며, 특정 금융상품의 매매나 투자에 대한 권유, 자문, 또는 종목 추천을 의미하지 않습니다.</p>
+            <p>해외선물, 마진, 암호화폐, 자동매매 시스템 등을 포함한 모든 금융/파생상품 거래는 높은 가격 변동성과 시장 위험을 동반하며, 원금 손실의 가능성이 있습니다. 특히 레버리지를 활용하는 거래의 경우 투자 원금을 초과하는 막대한 손실이 발생할 수 있으므로 각별한 주의가 필요합니다.</p>
+            <p>시스템의 알고리즘 설정, 시장의 거시 경제적 환경, 계좌의 증거금 조건 등에 따라 실제 투자 결과는 예상과 크게 달라질 수 있으며, 제공되는 과거의 수익률 데이터가 미래의 수익을 보장하지 않습니다.</p>
+            <p>투자 플랫폼 및 시스템매매 지원 여부는 각 브로커의 내부 정책 및 규제 환경에 따라 사전 예고 없이 변경되거나 제한될 수 있습니다.</p>
+            <p>모든 투자의 최종 판단과 그에 따른 금융적, 법적 책임은 전적으로 투자자 본인에게 있으며, 자신의 재무 상태와 투자 경험, 위험 감수 능력을 충분히 고려하여 신중하게 결정하시기 바랍니다.</p>
+          </div>
+        </section>
+
+        <!-- CONTENT: TAB 3 (DEPOSIT BANK) -->
+        <section id="tab-deposit-bank" class="tab-content">
+          <div class="content-layout">
+            <div class="guide-steps">
+
+              <!-- PDF Download Box -->
+              <div class="top-notice-box info" style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                <span class="icon" style="font-size: 24px; line-height: 1;">📄</span>
+                <div>
+                  <p style="margin: 0 0 12px 0; font-weight: 500; font-size: 16px; color: var(--text-color);">국내은행 입금방법 가이드 (PDF)</p>
+                  <a href="docs/Xlence 국내은행 입금 가이드 1.pdf" download class="support-btn website" style="display:inline-flex; padding: 10px 16px; font-size: 14px; width:auto; text-decoration:none; margin: 0; min-height: 40px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-svg" style="width: 18px; height: 18px; margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    가이드 다운로드
+                  </a>
+                </div>
+              </div>
+
+              <!-- Step 1 -->
+              <div class="step-card" id="dpb-step-1">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="dpb-1">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 1–2</div>
+                  <h3 class="step-title">입금하기 → 온라인 뱅킹 송금 선택</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>로그인 후 대시보드 화면 중앙의 메인 메뉴에서 <strong>'입금하기'</strong> 버튼을 클릭합니다.</li>
+                    <li>다양한 입금 결제 수단 중에서 국내 은행 이체를 지원하는 <strong>'온라인 뱅킹 송금'</strong> 아이콘을 찾아서 클릭해 주세요.</li>
+                  </ol>
+
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/deposit_page_2_img_2.png" alt="메인 메뉴 입금하기" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">메인 메뉴 입금하기</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/deposit_page_2_img_3.png" alt="온라인 뱅킹 송금" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">온라인 뱅킹 송금</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card" id="dpb-step-2">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="dpb-2">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 3</div>
+                  <h3 class="step-title">통화 및 금액 입력</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>국내 은행에서 원화(KRW)로 송금하므로 통화가 올바르게 지정되었는지 검토합니다.</p>
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">Deposit Amount Setting</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-group">
+                        <label>통화 (Currency)</label>
+                        <input type="text" value="KRW" readonly class="highlight-input">
+                      </div>
+                      <div class="form-group">
+                        <label>입금 금액 (Deposit Amount)</label>
+                        <input type="number" placeholder="원화 기준 금액 입력 (예: 1,000,000)" disabled>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3">금액 설정을 정상적으로 완료하셨다면 하단의 <strong>'전송'</strong> 버튼을 눌러 다음 단계로 진행합니다.</p>
+
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/deposit_page_3_img_2.png" alt="금액 설정 창" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">금액 설정 창</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card" id="dpb-step-3">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="dpb-3">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 4</div>
+                  <h3 class="step-title">이용약관 동의</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>입금 거래 조건 및 환율 변동 주의사항에 대한 이용약관 동의 화면이 표시됩니다. 내용 검토 후 <strong>체크박스를 선택</strong>하고
+                    <strong>'다음'</strong> 버튼을 클릭합니다.</p>
+
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/deposit_page_4_img_2.png" alt="약관 동의 화면" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">약관 동의 화면</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="step-card" id="dpb-step-4">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="dpb-4">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 5</div>
+                  <h3 class="step-title">가상계좌 발급 및 입금</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>이용약관 승인이 완료되면 화면에 본인 거래 전용 임시 가상계좌(은행명, 계좌번호, 입금주명)가 표시됩니다.</p>
+                  <div class="alert-box critical">
+                    <span class="icon">⏱️</span>
+                    <div class="alert-content">
+                      <h4>가상계좌 유효시간 엄수 (30분)</h4>
+                      <p>발급된 가상계좌의 유효시간은 <strong>발급 시점으로부터 30분</strong>입니다. 30분 이내에 인터넷 뱅킹이나 모바일 앱을 통하여 기입한 입금 금액과 정확히
+                        동일한 액수를 계좌로 이체해야 정상 완료됩니다. 시간이 경과할 시 계좌가 자동 폐기됩니다.</p>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/deposit_page_4_img_3.png" alt="가상계좌 발급 정보" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">가상계좌 발급 정보</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="step-card" id="dpb-step-5">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="dpb-5">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 6–7</div>
+                  <h3 class="step-title">입금 완료 확인</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>이체 처리가 성공하면 브로커 측에서 확인 절차를 밟습니다. 거래 대시보드의 입출금 내역 상태를 통해 확인이 가능합니다.</p>
+
+                  <div class="flow-chart-horizontal">
+                    <div class="flow-node">
+                      <span class="node-num">1</span>
+                      <span class="node-txt">검토 대기 중</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="flow-node active">
+                      <span class="node-num">2</span>
+                      <span class="node-txt">처리 중</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="flow-node success">
+                      <span class="node-num">3</span>
+                      <span class="node-txt">완료 ✅</span>
+                    </div>
+                  </div>
+
+                  <p class="mt-4">상태 코드가 <strong>'완료'</strong>로 승인 처리되면 고객님의 USD 지갑 또는 계좌에 환산된 달러 금액이 최종적으로 반영됩니다.</p>
+
+                  <div class="tip-box warning">
+                    <span class="icon">💬</span>
+                    <p>만약 가상계좌로 정상 이체 완료 후 20~30분 이상 지연되어 입금이 반영되지 않는다면, 즉시 텔레그램 공식 헬프데스크 계정인 <a
+                        href="https://t.me/kr_helpdesk" target="_blank" class="text-link">@kr_helpdesk</a>로 문의해 주시기
+                      바랍니다.</p>
+                  </div>
+
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/deposit_page_5_img_2.png" alt="입출금 내역 확인 1" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">입출금 내역 확인 1</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/deposit_page_6_img_2.png" alt="입출금 내역 확인 2" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">입출금 내역 확인 2</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Page Navigation Button -->
+              <div class="page-navigation-area">
+                <button class="prev-page-btn" data-next-tab="tab-account">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  이전 단계
+                </button>
+                <button class="next-page-btn" data-next-tab="tab-withdraw-bank">
+                  다음 단계: 국내은행 출금 방법
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Right Side: Table of Contents & Quick Tips -->
+            <div class="toc-sidebar">
+              <div class="toc-card">
+                <h3>이 페이지 목차</h3>
+                <ul class="toc-list">
+                  <li><a href="#dpb-step-1" class="toc-link">Step 1-2 — 입금 & 송금 방식 선택</a></li>
+                  <li><a href="#dpb-step-2" class="toc-link">Step 3 — 통화 및 금액 설정</a></li>
+                  <li><a href="#dpb-step-3" class="toc-link">Step 4 — 이용약관 동의</a></li>
+                  <li><a href="#dpb-step-4" class="toc-link">Step 5 — 가상계좌 이체 실행</a></li>
+                  <li><a href="#dpb-step-5" class="toc-link">Step 6-7 — 처리 프로세스 확인</a></li>
+                </ul>
+              </div>
+
+              <div class="checklist-summary-card">
+                <h3>완료 현황</h3>
+                <div class="gauge-wrapper">
+                  <svg class="gauge-circle" viewBox="0 0 36 36">
+                    <path class="gauge-circle-bg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="gauge-circle-fill" id="dpb-gauge-fill" stroke-dasharray="0, 100"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  </svg>
+                  <div class="gauge-percentage" id="dpb-gauge-percent">0%</div>
+                </div>
+                <p class="gauge-status"><span id="dpb-checked-count">0</span> / 5 단계 완료</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="risk-warning-footer">
+            <h4>*주의사항 및 위험고지</h4>
+            <p>본 안내 자료는 자동매매 시스템을 비롯한 금융/파생상품 거래에 대한 전반적인 이해를 돕기 위한 단순 정보 제공을 목적으로 하며, 특정 금융상품의 매매나 투자에 대한 권유, 자문, 또는 종목 추천을 의미하지 않습니다.</p>
+            <p>해외선물, 마진, 암호화폐, 자동매매 시스템 등을 포함한 모든 금융/파생상품 거래는 높은 가격 변동성과 시장 위험을 동반하며, 원금 손실의 가능성이 있습니다. 특히 레버리지를 활용하는 거래의 경우 투자 원금을 초과하는 막대한 손실이 발생할 수 있으므로 각별한 주의가 필요합니다.</p>
+            <p>시스템의 알고리즘 설정, 시장의 거시 경제적 환경, 계좌의 증거금 조건 등에 따라 실제 투자 결과는 예상과 크게 달라질 수 있으며, 제공되는 과거의 수익률 데이터가 미래의 수익을 보장하지 않습니다.</p>
+            <p>투자 플랫폼 및 시스템매매 지원 여부는 각 브로커의 내부 정책 및 규제 환경에 따라 사전 예고 없이 변경되거나 제한될 수 있습니다.</p>
+            <p>모든 투자의 최종 판단과 그에 따른 금융적, 법적 책임은 전적으로 투자자 본인에게 있으며, 자신의 재무 상태와 투자 경험, 위험 감수 능력을 충분히 고려하여 신중하게 결정하시기 바랍니다.</p>
+          </div>
+        </section>
+
+        <!-- CONTENT: TAB 4 (WITHDRAW BANK) -->
+        <section id="tab-withdraw-bank" class="tab-content">
+          <div class="content-layout">
+            <div class="guide-steps">
+
+              <!-- PDF Download Box -->
+              <div class="top-notice-box info" style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                <span class="icon" style="font-size: 24px; line-height: 1;">📄</span>
+                <div>
+                  <p style="margin: 0 0 12px 0; font-weight: 500; font-size: 16px; color: var(--text-color);">국내은행 출금방법 가이드 (PDF)</p>
+                  <a href="docs/Xlence 국내은행 출금 가이드 1.pdf" download class="support-btn website" style="display:inline-flex; padding: 10px 16px; font-size: 14px; width:auto; text-decoration:none; margin: 0; min-height: 40px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-svg" style="width: 18px; height: 18px; margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    가이드 다운로드
+                  </a>
+                </div>
+              </div>
+
+              <!-- Step 1 -->
+              <div class="step-card" id="wdb-step-1">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="wdb-1">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 1–2</div>
+                  <h3 class="step-title">내부이체 → 인출 진행</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>MT4 거래 계좌에 들어 있는 자금을 출금하기 전, 먼저 대시보드의 <strong>'내부 이체'</strong> 메뉴를 이용해 출금하고자 하는 금액을 본인의
+                      <strong>원화(KRW) 월렛</strong>으로 이체시킵니다.</li>
+                    <li>이체가 완료되어 원화 지갑에 잔액이 표시되면, 바로 옆의 <strong>'인출'</strong> 버튼을 클릭합니다.</li>
+                  </ol>
+
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/withdraw_page_2_img_2.png" alt="출금하기 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">출금하기 선택</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/withdraw_page_2_img_3.png" alt="온라인 뱅킹 송금" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">온라인 뱅킹 송금</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card" id="wdb-step-2">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="wdb-2">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 3–4</div>
+                  <h3 class="step-title">출금 수단 선택 및 PIN 입력</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>인출 결제 옵션 화면이 표시되면, 출금 수단으로 <strong>'온라인 뱅킹 송금'</strong>을 선택합니다.</li>
+                    <li>선택 후 본인의 보안 유지를 위하여 회원가입 시 기재했던 이메일로 <strong>자동 수신된 6자리 PIN 코드</strong>를 입력창에 기입합니다.</li>
+                  </ol>
+
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">Secured PIN Authentication</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-group text-center">
+                        <label>이메일로 발송된 PIN 번호 6자리를 기입하세요</label>
+                        <div class="pin-input-mock">
+                          <span>3</span><span>7</span><span>9</span><span>2</span><span>4</span><span>8</span>
+                        </div>
+                        <span class="helper-text success mt-2">📧 가입 이메일로 PIN 번호가 전송되었습니다.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/withdraw_page_3_img_2.png" alt="출금 금액 입력" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">출금 금액 입력</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/withdraw_page_3_img_3.png" alt="은행 정보 입력" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">은행 정보 입력</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card" id="wdb-step-3">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="wdb-3">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 5–6</div>
+                  <h3 class="step-title">출금 완료 및 입금 확인</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>출금 신청 서류가 브로커 백오피스 담당 부서에 도달하면 순차적으로 자금 승인 처리가 실행됩니다.</p>
+
+                  <div class="flow-chart-horizontal">
+                    <div class="flow-node">
+                      <span class="node-num">1</span>
+                      <span class="node-txt">검토 대기 중</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="flow-node active">
+                      <span class="node-num">2</span>
+                      <span class="node-txt">처리 중</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="flow-node success">
+                      <span class="node-num">3</span>
+                      <span class="node-txt">완료 ✅</span>
+                    </div>
+                  </div>
+
+                  <p class="mt-4">상태 정보가 <strong>'완료'</strong>로 갱신되면 정상적으로 지정하신 국내 은행 계좌로 출금 원화가 입금 완료됩니다.</p>
+
+                  <div class="tip-box warning">
+                    <span class="icon">💬</span>
+                    <p>출금 이체가 2~3시간 이상 과도하게 미반영되어 처리가 미뤄진다면, 텔레그램 공식 소통망 <a href="https://t.me/kr_helpdesk"
+                        target="_blank" class="text-link">@kr_helpdesk</a>로 문의주시면 처리 현황을 피드백 받으실 수 있습니다.</p>
+                  </div>
+
+                  <div class="screenshot-grid mt-4">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/withdraw_page_4_img_2.png" alt="출금 내역 확인 1" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">출금 내역 확인 1</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/withdraw_page_5_img_2.png" alt="출금 내역 확인 2" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">출금 내역 확인 2</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Page Navigation Button -->
+              <div class="page-navigation-area">
+                <button class="prev-page-btn" data-next-tab="tab-deposit-bank">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  이전 단계
+                </button>
+                <button class="next-page-btn" data-next-tab="tab-deposit-crypto">
+                  다음 단계: 암호화폐 입출금 방법
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Right Side: Table of Contents & Quick Tips -->
+            <div class="toc-sidebar">
+              <div class="toc-card">
+                <h3>이 페이지 목차</h3>
+                <ul class="toc-list">
+                  <li><a href="#wdb-step-1" class="toc-link">Step 1-2 — 내부이체 및 인출 신청</a></li>
+                  <li><a href="#wdb-step-2" class="toc-link">Step 3-4 — 온라인뱅킹 송금 & PIN</a></li>
+                  <li><a href="#wdb-step-3" class="toc-link">Step 5-6 — 정산 처리 및 입금확인</a></li>
+                </ul>
+              </div>
+
+              <div class="checklist-summary-card">
+                <h3>완료 현황</h3>
+                <div class="gauge-wrapper">
+                  <svg class="gauge-circle" viewBox="0 0 36 36">
+                    <path class="gauge-circle-bg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="gauge-circle-fill" id="wdb-gauge-fill" stroke-dasharray="0, 100"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  </svg>
+                  <div class="gauge-percentage" id="wdb-gauge-percent">0%</div>
+                </div>
+                <p class="gauge-status"><span id="wdb-checked-count">0</span> / 3 단계 완료</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="risk-warning-footer">
+            <h4>*주의사항 및 위험고지</h4>
+            <p>본 안내 자료는 자동매매 시스템을 비롯한 금융/파생상품 거래에 대한 전반적인 이해를 돕기 위한 단순 정보 제공을 목적으로 하며, 특정 금융상품의 매매나 투자에 대한 권유, 자문, 또는 종목 추천을 의미하지 않습니다.</p>
+            <p>해외선물, 마진, 암호화폐, 자동매매 시스템 등을 포함한 모든 금융/파생상품 거래는 높은 가격 변동성과 시장 위험을 동반하며, 원금 손실의 가능성이 있습니다. 특히 레버리지를 활용하는 거래의 경우 투자 원금을 초과하는 막대한 손실이 발생할 수 있으므로 각별한 주의가 필요합니다.</p>
+            <p>시스템의 알고리즘 설정, 시장의 거시 경제적 환경, 계좌의 증거금 조건 등에 따라 실제 투자 결과는 예상과 크게 달라질 수 있으며, 제공되는 과거의 수익률 데이터가 미래의 수익을 보장하지 않습니다.</p>
+            <p>투자 플랫폼 및 시스템매매 지원 여부는 각 브로커의 내부 정책 및 규제 환경에 따라 사전 예고 없이 변경되거나 제한될 수 있습니다.</p>
+            <p>모든 투자의 최종 판단과 그에 따른 금융적, 법적 책임은 전적으로 투자자 본인에게 있으며, 자신의 재무 상태와 투자 경험, 위험 감수 능력을 충분히 고려하여 신중하게 결정하시기 바랍니다.</p>
+          </div>
+        </section>
+
+        <!-- CONTENT: TAB 5 (DEPOSIT CRYPTO) -->
+        <section id="tab-deposit-crypto" class="tab-content">
+          <div class="content-layout">
+            <div class="guide-steps">
+
+              <!-- Subsection: Deposit -->
+              <div class="section-divider">
+                <span>암호화폐 입금 방법</span>
+              </div>
+
+              <!-- Step 1 -->
+              <div class="step-card" id="cpt-step-1">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="cpt-1">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 1–2</div>
+                  <h3 class="step-title">입금하기 → 디지털 자산 선택</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>메인 대시보드 화면에서 <strong>'입금하기'</strong> 메뉴를 클릭합니다.</li>
+                    <li>입금 수단 중 <strong>'디지털 자산'</strong> 아이콘을 찾아 선택합니다.</li>
+                  </ol>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_1_img_0.jpeg" alt="홈페이지 화면" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. 홈페이지 화면</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_2_img_0.jpeg" alt="사이드 메뉴 열기" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. 사이드 메뉴 열기</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_3_img_0.png" alt="입금하기(Deposit) 클릭" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">3. 입금하기(Deposit) 클릭</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_4_img_0.jpeg" alt="디지털 자산(Digital Assets) 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">4. 디지털 자산 선택</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card" id="cpt-step-2">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="cpt-2">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 3</div>
+                  <h3 class="step-title">입금 정보 설정 및 지갑 주소 복사</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>입금하고자 하는 코인 종류와 입금 받을 블록체인 네트워크 규격을 정밀하게 확인해 주세요.</p>
+
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">Digital Asset Selection</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-group">
+                        <label>통화 (Currency)</label>
+                        <select disabled>
+                          <option>USDT (Tether)</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>전송 네트워크 (Network)</label>
+                        <select disabled>
+                          <option>TRC20 (TRON Network)</option>
+                        </select>
+                      </div>
+                      <div class="form-group mt-3">
+                        <label>발급된 본인 입금용 지갑 주소 (USDT-TRC20)</label>
+                        <div class="input-with-copy">
+                          <input type="text" id="wallet-address-mock" value="TX2vP1eQ8qWz5S9zK1nLp7m3R9xY2tB1w"
+                            readonly>
+                          <button class="copy-btn" data-clipboard-target="#wallet-address-mock">주소 복사</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_5_img_0.jpeg" alt="입금용 월렛 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. 입금용 월렛 선택</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_6_img_0.jpeg" alt="통화 및 TRC20 설정" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. 통화 및 TRC20 설정</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_7_img_0.jpeg" alt="입금 주소 및 QR 발급" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">3. 입금 주소 및 QR 발급</div>
+                    </div>
+                  </div>
+
+                  <div class="tip-box info">
+                    <span class="icon">📋</span>
+                    <p>발급된 주소의 <strong>'복사'</strong> 버튼을 클릭하여 안전하게 복사해 둡니다. 주소 기입 실수를 막기 위해 가급적 텍스트를 메모장에 미리 붙여넣어 확인하시는
+                      것을 권장합니다.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card" id="cpt-step-3">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="cpt-3">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 4</div>
+                  <h3 class="step-title">본인 이용 거래소에서 출금 전송</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>이용하고 계시는 해외/국내 가상자산 거래소(예: <strong>OKX, Binance, Bybit, Bitget</strong> 등)의 자산 출금(Withdrawal) 탭으로
+                    이동합니다.</p>
+                  <ol class="bullet-list">
+                    <li>출금 코인 종류: <strong>USDT</strong></li>
+                    <li>출금 주소란: 방금 복사해 둔 Xlence <strong>전용 지갑 주소</strong>를 붙여넣기 합니다.</li>
+                    <li>네트워크 지정: 반드시 <strong>TRC-20 (TRON)</strong>을 수동 선택해 주세요.</li>
+                  </ol>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_8_img_0.jpeg" alt="OKX 자산 페이지" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. OKX 자산 페이지</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_9_img_0.jpeg" alt="USDT 출금 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. USDT 출금 선택</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_10_img_0.jpeg" alt="On-chain 출금 방식 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">3. On-chain 출금 방식 선택</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_11_img_0.jpeg" alt="USDT-TRC20 네트워크 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">4. TRC20 네트워크 선택</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/io_page_12_img_0.jpeg" alt="Xlence 주소 입력 및 전송" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">5. Xlence 주소 입력 및 전송</div>
+                    </div>
+                  </div>
+
+                  <div class="alert-box critical">
+                    <span class="icon">⚠️</span>
+                    <div class="alert-content">
+                      <h4>네트워크 오선택 경고 (영구 오입금 위험)</h4>
+                      <p>보내시는 거래소와 받는 브로커의 네트워크는 무조건 동일해야 합니다. Xlence는 <strong>TRC20 네트워크</strong>를 지원하므로 ERC20, BSC 등의
+                        타 네트워크를 선택해 전송할 경우, 전송된 <strong>자산이 블록체인 상에서 영구히 분실</strong>되므로 절대 주의 바랍니다.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="step-card" id="cpt-step-4">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="cpt-4">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 5</div>
+                  <h3 class="step-title">입금 승인 완료 확인</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>거래소에서 블록체인 네트워크 승인이 완료되면 대시보드의 자산 내역 상태가 <strong>'완료(Completed)'</strong>로 바뀌며 5~15분 이내에 잔고가 충전됩니다.
+                    문의사항 발생 시 텔레그램 헬프데스크로 요청 주세요.</p>
+                </div>
+              </div>
+
+              <!-- Subsection: Withdrawal -->
+              <div class="section-divider">
+                <span>암호화폐 출금 방법</span>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="step-card" id="cpt-step-5">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="cpt-5">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 5</div>
+                  <h3 class="step-title">인출 신청 및 정보 기입</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>출금하고자 하는 금액을 <strong>USDT 월렛</strong>으로 내부이체 합니다.</li>
+                    <li>대시보드의 '인출하기' 클릭 후 수단으로 <strong>'디지털 자산'</strong>을 클릭합니다.</li>
+                    <li>전송받으실 본인 개인 지갑 주소 또는 사용 거래소의 <strong>USDT(TRC20) 입금 주소</strong>를 올바르게 복사하여 붙여넣고, 신청 금액을 작성합니다.
+                    </li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- Step 6 -->
+              <div class="step-card" id="cpt-step-6">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="cpt-6">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 6</div>
+                  <h3 class="step-title">PIN 인증 및 정산 확인</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>이메일로 수신된 6자리 PIN 코드를 인증란에 기입한 후 신청을 제출합니다. 백오피스 부서 검토 및 블록체인 전송까지 통상적으로 15~30분가량 소요되며, 상태가
+                    <strong>'완료'</strong>로 승인되면 본인 지갑에 입금이 완료됩니다.</p>
+                </div>
+              </div>
+
+              <!-- Page Navigation Button -->
+              <div class="page-navigation-area">
+                <button class="prev-page-btn" data-next-tab="tab-withdraw-bank">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  이전 단계
+                </button>
+                <button class="next-page-btn" data-next-tab="tab-mt4">
+                  다음 단계: MT4 사용 방법
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Right Side: Table of Contents & Quick Tips -->
+            <div class="toc-sidebar">
+              <div class="toc-card">
+                <h3>이 페이지 목차</h3>
+                <ul class="toc-list">
+                  <li><a href="#cpt-step-1" class="toc-link">입금 1-2 — 디지털 자산 지정</a></li>
+                  <li><a href="#cpt-step-2" class="toc-link">입금 3 — 전송 규격 & 지갑 복사</a></li>
+                  <li><a href="#cpt-step-3" class="toc-link">입금 4 — 거래소 외부 전송 주의사항</a></li>
+                  <li><a href="#cpt-step-4" class="toc-link">입금 5 — 최종 밸런스 점검</a></li>
+                  <li><a href="#cpt-step-5" class="toc-link">출금 5 — 지갑 주소 & 인출</a></li>
+                  <li><a href="#cpt-step-6" class="toc-link">출금 6 — OTP PIN 완료 확인</a></li>
+                </ul>
+              </div>
+
+              <div class="checklist-summary-card">
+                <h3>완료 현황</h3>
+                <div class="gauge-wrapper">
+                  <svg class="gauge-circle" viewBox="0 0 36 36">
+                    <path class="gauge-circle-bg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="gauge-circle-fill" id="cpt-gauge-fill" stroke-dasharray="0, 100"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  </svg>
+                  <div class="gauge-percentage" id="cpt-gauge-percent">0%</div>
+                </div>
+                <p class="gauge-status"><span id="cpt-checked-count">0</span> / 6 단계 완료</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="risk-warning-footer">
+            <h4>*주의사항 및 위험고지</h4>
+            <p>본 안내 자료는 자동매매 시스템을 비롯한 금융/파생상품 거래에 대한 전반적인 이해를 돕기 위한 단순 정보 제공을 목적으로 하며, 특정 금융상품의 매매나 투자에 대한 권유, 자문, 또는 종목 추천을 의미하지 않습니다.</p>
+            <p>해외선물, 마진, 암호화폐, 자동매매 시스템 등을 포함한 모든 금융/파생상품 거래는 높은 가격 변동성과 시장 위험을 동반하며, 원금 손실의 가능성이 있습니다. 특히 레버리지를 활용하는 거래의 경우 투자 원금을 초과하는 막대한 손실이 발생할 수 있으므로 각별한 주의가 필요합니다.</p>
+            <p>시스템의 알고리즘 설정, 시장의 거시 경제적 환경, 계좌의 증거금 조건 등에 따라 실제 투자 결과는 예상과 크게 달라질 수 있으며, 제공되는 과거의 수익률 데이터가 미래의 수익을 보장하지 않습니다.</p>
+            <p>투자 플랫폼 및 시스템매매 지원 여부는 각 브로커의 내부 정책 및 규제 환경에 따라 사전 예고 없이 변경되거나 제한될 수 있습니다.</p>
+            <p>모든 투자의 최종 판단과 그에 따른 금융적, 법적 책임은 전적으로 투자자 본인에게 있으며, 자신의 재무 상태와 투자 경험, 위험 감수 능력을 충분히 고려하여 신중하게 결정하시기 바랍니다.</p>
+          </div>
+        </section>
+
+        <!-- CONTENT: TAB 6 (MT4 GUIDE) -->
+        <section id="tab-mt4" class="tab-content">
+          <div class="content-layout">
+            <div class="guide-steps">
+              <div class="top-notice-box info">
+                <span class="icon">📌</span>
+                <p>MT4 앱을 로그인하여 사용하기 전, 반드시 <strong>2단계 가이드에서 실거래 계좌(Essential 계좌) 개설이 선행</strong>되어야 합니다. 발급받으신 계좌 번호와
+                  패스워드를 미리 준비해 주세요.</p>
+              </div>
+
+              <!-- Step 1 -->
+              <div class="step-card" id="mt4-step-1">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="mt4-1">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 1</div>
+                  <h3 class="step-title">MT4 앱 다운로드 및 설치</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>스마트폰의 앱 마켓에서 글로벌 트레이딩 전용 단말기인 <strong>MetaTrader 4</strong>를 검색 후 인스톨해 주세요.</p>
+
+                  <div class="app-info-card">
+                    <div class="app-info-left">
+                      <div class="app-icon-mock">MT4</div>
+                      <div>
+                        <div class="app-name">MetaTrader 4 (MT4)</div>
+                        <div class="app-vendor">MetaQuotes Software Corp.</div>
+                      </div>
+                    </div>
+                    <div class="app-rating">
+                      <span class="stars">★★★★★</span>
+                      <span class="rating-num">4.8</span>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item" style="max-width: 140px;">
+                      <div class="phone-mockup-frame" style="border-radius: 12px; border: 4px solid var(--bg-sidebar);">
+                        <img src="images/mt4_page_1_img_1.png" alt="MetaTrader 4 로고" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">MetaTrader 4 공식 로고</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_2_img_0.jpeg" alt="MT4 앱 다운로드" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">앱 마켓 검색 다운로드</div>
+                    </div>
+                  </div>
+
+                  <div class="download-buttons-group">
+                    <a href="https://apps.apple.com/app/metatrader-4/id496212596" target="_blank"
+                      rel="noopener noreferrer" class="dl-btn apple">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.69-1.12 1.84-.98 2.94.1.08.2.12.3.12.87 0 1.94-.57 2.51-1.45z" />
+                      </svg>
+                      App Store 다운로드
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader4" target="_blank"
+                      rel="noopener noreferrer" class="dl-btn android">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M5.229 1.917c-.529.563-.829 1.401-.829 2.472v15.222c0 1.07.3 1.909.829 2.472l.081.074L15.34 12.115v-.23L5.31 1.843l-.081.074zm11.238 9.968l3.652-2.075c1.045-.594 1.045-1.564 0-2.159L16.467 5.56l-3.328 3.328 3.328 3.328l-.001-.003zm-4.328.797l-2.91-2.91-4.836 4.908.081.086c.468.528 1.261.59 2.189.062l5.476-3.146zm0-2.38L4.363 4.981l4.836 4.908 2.91-2.91z" />
+                      </svg>
+                      Google Play 다운로드
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card" id="mt4-step-2">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="mt4-2">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 2</div>
+                  <h3 class="step-title">브로커 서버 검색</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>MT4 앱을 실행한 후 우측 하단 설정 → <strong>'새 계좌 등록'</strong> 또는 <strong>'기존 계좌로 로그인'</strong> 메뉴를 터치합니다.
+                    </li>
+                    <li>트레이딩 서버 검색 필드에 브로커 영문 이름인 <code class="copyable-code" id="search-broker">Xlence</code>를 직접 타이핑해
+                      줍니다.</li>
+                  </ol>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_3_img_0.png" alt="기존 계좌 로그인 진입" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. 기존 계좌 로그인 진입</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_4_img_0.png" alt="브로커 서버 검색" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. 브로커 서버 검색</div>
+                    </div>
+                  </div>
+
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">Choose Server</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-group">
+                        <label>서버 검색 (Find Broker)</label>
+                        <div class="input-with-copy">
+                          <input type="text" id="broker-search-text" value="Xlence" readonly>
+                          <button class="copy-btn" data-clipboard-target="#broker-search-text">복사</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tip-box warning">
+                    <span class="icon">⚠️</span>
+                    <p>만약 검색 목록에 브로커가 조회되지 않을 경우, 하단부의 <strong>'브로커를 찾지 못했습니까?'</strong> 혹은 수동 검색을 이용해 주십시오.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card" id="mt4-step-3">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="mt4-3">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 3</div>
+                  <h3 class="step-title">서버 선택 및 로그인 정보 입력</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>검색 결과로 나타나는 서버 중 실거래 전용 라이브 서버인 <strong>Xlence-Real6 (Tradeco Ltd.)</strong>을 터치해 선택합니다.</li>
+                  </ol>
+                  <div class="code-box-wrapper">
+                    <code id="server-text-code">Xlence-Real6</code>
+                    <button class="copy-btn small" data-clipboard-target="#server-text-code">복사</button>
+                  </div>
+
+                  <div class="form-mockup mt-3">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">MT4 Account Login</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-group">
+                        <label>로그인 번호 (Login ID)</label>
+                        <input type="text" placeholder="Xlence에서 발급받은 거래 계좌 번호" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label>비밀번호 (Password)</label>
+                        <input type="password" value="••••••••••••" disabled>
+                        <span class="helper-text">거래 계좌 생성 시 본인이 수동 설정한 영문/숫자/특수기호 비밀번호</span>
+                      </div>
+                      <div class="checkbox-mock">
+                        <input type="checkbox" checked disabled>
+                        <span>비밀번호 저장 (Save Password) 권장</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_5_img_0.png" alt="실거래 서버 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. 실거래 서버 선택</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_6_img_0.jpeg" alt="거래 계좌번호 및 패스워드 로그인" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. 계좌 로그인</div>
+                    </div>
+                  </div>
+
+                  <p class="mt-3">정확하게 기입하셨다면 하단의 <strong>로그인</strong>을 터치하여 거래소 서버 접속을 승인받습니다.</p>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="step-card" id="mt4-step-4">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="mt4-4">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 4</div>
+                  <h3 class="step-title">기본 인터페이스 및 메뉴 구성</h3>
+                </div>
+                <div class="step-card-body">
+                  <p>로그인이 올바르게 마쳐지면 메인 화면에 아래와 같이 구성된 5개의 핵심 메인 탭들이 나타납니다.</p>
+
+                  <div class="grid-menu-desc">
+                    <div class="menu-desc-card">
+                      <div class="card-icon">📊</div>
+                      <h4>시세 (Quotes)</h4>
+                      <p>거래 가능한 외환(Forex) 및 CFD 통화쌍들의 매수/매도 실시간 시세 목록을 점검합니다.</p>
+                    </div>
+                    <div class="menu-desc-card">
+                      <div class="card-icon">📈</div>
+                      <h4>차트 (Charts)</h4>
+                      <p>실시간 가격 캔들 차트를 로드하여 추세 분석 및 기술적 보조 지표를 차트에 배치합니다.</p>
+                    </div>
+                    <div class="menu-desc-card">
+                      <div class="card-icon">💼</div>
+                      <h4>트레이드 (Trade)</h4>
+                      <p>현재 체결되어 평가 손익이 실시간 변동하고 있는 포지션 및 진입 예약 상태를 관리합니다.</p>
+                    </div>
+                    <div class="menu-desc-card">
+                      <div class="card-icon">📬</div>
+                      <h4>메시지 (Messages)</h4>
+                      <p>시스템 알림이나 소속 브로커 본사 측의 공식 공지사항 등을 접수받습니다.</p>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_7_img_0.jpeg" alt="시세(Quotes) 탭 구조" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. 시세 (Quotes) 탭</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_8_img_0.jpeg" alt="차트(Charts) 탭 구조" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. 차트 (Charts) 탭</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="step-card" id="mt4-step-5">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="mt4-5">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 5</div>
+                  <h3 class="step-title">매수/매도 신규 주문하기</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li><strong>'시세'</strong> 탭에서 진입하고자 하는 타겟 통화쌍(예: EURUSD, GBPUSD 등) 항목을 찾아 1~2초간 길게 터치합니다.</li>
+                    <li>팝업 창이 열리면 최상단의 <strong>'새 주문'</strong> 버튼을 클릭합니다.</li>
+                  </ol>
+
+                  <div class="form-mockup">
+                    <div class="form-mockup-header">
+                      <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+                      <span class="mock-title">New Trade Order</span>
+                    </div>
+                    <div class="form-mockup-body">
+                      <div class="form-row">
+                        <div class="form-col">
+                          <label>거래 심볼</label>
+                          <input type="text" value="EURUSD (유로/달러)" readonly>
+                        </div>
+                        <div class="form-col">
+                          <label>거래 계약 수량 (Volume)</label>
+                          <input type="text" placeholder="1.00 (1 스탠다드랏)" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-col">
+                          <label class="danger-text">Stop Loss (손절라인 설정)</label>
+                          <input type="number" placeholder="지정 손절가 기입" disabled>
+                        </div>
+                        <div class="form-col">
+                          <label class="success-text">Take Profit (익절라인 설정)</label>
+                          <input type="number" placeholder="지정 목표가 기입" disabled>
+                        </div>
+                      </div>
+                      <div class="action-buttons-mock">
+                        <button class="order-btn sell-mock" disabled>SELL (매도)</button>
+                        <button class="order-btn buy-mock" disabled>BUY (매수)</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_9_img_0.jpeg" alt="EURUSD 신규 주문 선택" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. EURUSD 신규 주문 선택</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_10_img_0.jpeg" alt="매수/매도 주문 실행 화면" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. 매수/매도 주문 실행 화면</div>
+                    </div>
+                  </div>
+
+                  <div class="alert-box critical">
+                    <span class="icon">⚠️</span>
+                    <div class="alert-content">
+                      <h4>안전 거래 가이드 (Stop Loss 리스크 관리)</h4>
+                      <p>체결 시 리스크 관리를 위하여 <strong>Stop Loss (손절매 가격) 설정을 필수적</strong>으로 생활화해 주십시오. 손절매 가격을 설정하지 않을 경우
+                        급격한 장세 변동 시 대응할 틈 없이 엄청난 자산의 위기를 겪으실 수 있습니다.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 6 -->
+              <div class="step-card" id="mt4-step-6">
+                <div class="step-card-header">
+                  <label class="checkbox-container">
+                    <input type="checkbox" class="step-checkbox" data-step-id="mt4-6">
+                    <span class="checkmark"></span>
+                  </label>
+                  <div class="step-badge">Step 6</div>
+                  <h3 class="step-title">포지션 실시간 관리 및 청산</h3>
+                </div>
+                <div class="step-card-body">
+                  <ol class="bullet-list">
+                    <li>현재 가동 중인 포지션은 하단 메뉴의 <strong>'트레이드'</strong> 탭에서 손쉽게 트래킹할 수 있습니다.</li>
+                    <li>청산을 원할 시, 해당 포지션 영역을 길게 누른 다음 생성되는 선택지에서 <strong>'포지션 청산'</strong>을 선택해 즉각 청산 및 정산을 실행합니다.</li>
+                    <li>실시간 총 잔고 및 잔여 평가 담보금 비율 등을 화면 최상단 상태표시를 통해 파악해 가면서 안정감 있게 자금을 가동하십시오.</li>
+                  </ol>
+
+                  <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_11_img_0.jpeg" alt="트레이드 탭 포지션 확인" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">1. 트레이드 탭 포지션 확인</div>
+                    </div>
+                    <div class="screenshot-item">
+                      <div class="phone-mockup-frame">
+                        <img src="images/mt4_page_12_img_0.png" alt="포지션 청산 완료 화면" class="zoomable-img">
+                      </div>
+                      <div class="screenshot-caption">2. 포지션 청산 완료 화면</div>
+                    </div>
+                  </div>
+
+                  <div class="celebration-box mt-4">
+                    🎉 축하합니다! MT4 기본 프로그램 세팅과 다루는 흐름을 모두 숙지하셨습니다. 안전하고 계획적인 매매를 기원합니다.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Side: Table of Contents & Quick Tips -->
+            <div class="toc-sidebar">
+              <div class="toc-card">
+                <h3>이 페이지 목차</h3>
+                <ul class="toc-list">
+                  <li><a href="#mt4-step-1" class="toc-link">Step 1 — 모바일 앱 다운로드</a></li>
+                  <li><a href="#mt4-step-2" class="toc-link">Step 2 — 브로커 서버 수동 검색</a></li>
+                  <li><a href="#mt4-step-3" class="toc-link">Step 3 — 로그인 연결 구성</a></li>
+                  <li><a href="#mt4-step-4" class="toc-link">Step 4 — 5대 메인 메뉴 구조</a></li>
+                  <li><a href="#mt4-step-5" class="toc-link">Step 5 — 신규 매수/매도 오더</a></li>
+                  <li><a href="#mt4-step-6" class="toc-link">Step 6 — 진행 포지션 모니터링</a></li>
+                </ul>
+              </div>
+
+              <div class="checklist-summary-card">
+                <h3>완료 현황</h3>
+                <div class="gauge-wrapper">
+                  <svg class="gauge-circle" viewBox="0 0 36 36">
+                    <path class="gauge-circle-bg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="gauge-circle-fill" id="mt4-gauge-fill" stroke-dasharray="0, 100"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  </svg>
+                  <div class="gauge-percentage" id="mt4-gauge-percent">0%</div>
+                </div>
+                <p class="gauge-status"><span id="mt4-checked-count">0</span> / 6 단계 완료</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="risk-warning-footer">
+            <h4>*주의사항 및 위험고지</h4>
+            <p>본 안내 자료는 자동매매 시스템을 비롯한 금융/파생상품 거래에 대한 전반적인 이해를 돕기 위한 단순 정보 제공을 목적으로 하며, 특정 금융상품의 매매나 투자에 대한 권유, 자문, 또는 종목 추천을 의미하지 않습니다.</p>
+            <p>해외선물, 마진, 암호화폐, 자동매매 시스템 등을 포함한 모든 금융/파생상품 거래는 높은 가격 변동성과 시장 위험을 동반하며, 원금 손실의 가능성이 있습니다. 특히 레버리지를 활용하는 거래의 경우 투자 원금을 초과하는 막대한 손실이 발생할 수 있으므로 각별한 주의가 필요합니다.</p>
+            <p>시스템의 알고리즘 설정, 시장의 거시 경제적 환경, 계좌의 증거금 조건 등에 따라 실제 투자 결과는 예상과 크게 달라질 수 있으며, 제공되는 과거의 수익률 데이터가 미래의 수익을 보장하지 않습니다.</p>
+            <p>투자 플랫폼 및 시스템매매 지원 여부는 각 브로커의 내부 정책 및 규제 환경에 따라 사전 예고 없이 변경되거나 제한될 수 있습니다.</p>
+            <p>모든 투자의 최종 판단과 그에 따른 금융적, 법적 책임은 전적으로 투자자 본인에게 있으며, 자신의 재무 상태와 투자 경험, 위험 감수 능력을 충분히 고려하여 신중하게 결정하시기 바랍니다.</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close">&times;</button>
+      <img src="" alt="확대된 이미지" id="lightbox-img" class="lightbox-img">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
